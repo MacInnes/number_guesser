@@ -3,8 +3,8 @@ function answerGenerator(min, max){
 }
 
 $('#set-min-max').click(function(){
-  var min = parseInt($('#min').val());
-  var max = parseInt($('#max').val());
+  min = parseInt($('#min').val());
+  max = parseInt($('#max').val());
   answer = answerGenerator(min, max);
   $('#reset').attr('disabled', false)
 })
@@ -13,7 +13,12 @@ function compare(guess){
   if (guess < 1 || guess > 100){
     $('.messages').text(`${guess} is not a valid guess.  Please enter a number between 1-100`)
   } else if (answer == guess){
-    $('.messages').text(`Boom!  You win!  The answer was ${answer}`)
+    min -= 10;
+    max += 10;
+    $('#min').val(min);
+    $('#max').val(max);
+    $('.messages').text(`Boom!  You win!  The answer was ${answer}.  Your range has been updated to ${min} - ${max}.  Keep guessing!`)
+    answer = answerGenerator(min, max);
   } else if (answer > guess){
     $('.messages').text(`Wrong!  Your guess of ${guess} is lower than the number.`)
   } else {
