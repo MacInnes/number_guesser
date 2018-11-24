@@ -1,5 +1,13 @@
-var answer = Math.floor(Math.random() * 100) + 1;
-console.log(answer);
+function answerGenerator(min, max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+$('#set-min-max').click(function(){
+  var min = parseInt($('#min').val());
+  var max = parseInt($('#max').val());
+  answer = answerGenerator(min, max);
+  $('#reset').attr('disabled', false)
+})
 
 function compare(guess){
   if (guess < 1 || guess > 100){
@@ -27,7 +35,9 @@ $('#clear').click(function(){
 })
 
 $('#reset').click(function(){
-  answer = Math.floor(Math.random() * 100) + 1;
-  console.log(answer);
+  $(this).attr('disabled', true)
+  $('#min').val('')
+  $('#max').val('')
+  $('#guess').val('')
   $('.messages').text('Game successfully reset.')
 })
