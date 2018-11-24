@@ -6,14 +6,20 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div">
-      <label>Enter your guess:</label>
+    <div>
+      <label>Enter your guess (1-100):</label>
     </div>
     <div>
-      <input type="text" id='guess'>
+      <input type="number" id='guess' min="1" max="100" required>
     </div>
     <div>
       <button type="button" id="submit">Guess!</button>
+    </div>
+    <div>
+      <button type="button" id="clear">Clear Input</button>
+    </div>
+    <div>
+      <button type="button" id="reset">Reset the game</button>
     </div>
 
     <div class="messages">
